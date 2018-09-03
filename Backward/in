@@ -2,7 +2,7 @@ Rules:
 a ^ b => c
 c => d
 d => e
-d ^ e => z
+d ^ ¬ e => z
 END
 Base:
 a b
