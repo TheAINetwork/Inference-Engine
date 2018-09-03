@@ -1,6 +1,6 @@
 def getAtom(atom):
     atom = atom.strip(' ')
-    return(atom)
+    # return(atom)
     if (atom[0] != '¬'): return(atom)
     return('¬' + atom[1:].strip(' '))
 
@@ -12,17 +12,18 @@ def readRules():
         if (line == "END"): break
         print(line)
         antecedent, consequent = line.split("=>")
-        rules += [[[getAtom(s) for s in antecedent.split('^')], consequent.strip(' ')]]
+        rules += [[[getAtom(s) for s in antecedent.split('^')], getAtom(consequent)]]
     return(rules)
 
 def readBase():
     print(input())
-    base = set()
+    base = {}
     while (True):
         line = input()
         if (line == "END"): break
         print(line)
-        [base.add(symbol) for symbol in line.split()]
+        for symbol in line.split(','):
+            base[getAtom(symbol)] = True
     return(base)
 
 def readTarget():

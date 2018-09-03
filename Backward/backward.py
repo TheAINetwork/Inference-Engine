@@ -19,7 +19,7 @@ def printResult(depth, result):
 
 def backwards(graph, base, target, depth):
     print(depth*" "*SPACE_SIZE, colors.blue, target, colors.end, sep='')
-    if (target in base if target[0] != '¬' else target not in base):
+    if (target in base and base[target] == True):
         printResult(depth + 1, True)
         return(True)
     if (target not in graph):
@@ -28,7 +28,7 @@ def backwards(graph, base, target, depth):
     for rule in graph[target]:
         for element in rule:
             if (backwards(graph, base, element, depth + 1)):
-                base.add(element)
+                base[element] = True
             else: break
         else:
             printResult(depth + 1, True)

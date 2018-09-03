@@ -1,11 +1,11 @@
 Rules:
-a ^ b => c
+a ^ ¬b => c
 c => d
-d => e
-d ^ ¬ e => z
+d => ¬ e
+¬ e => z
 END
 Base:
-a b
+a, ¬ b
 END
 Target:
 z
